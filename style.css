@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to top, rgba(71, 1, 1, 0.5) , rgba(255, 242, 0, 0.5) );
 }
 .GameDiv {
     display: none;
@@ -15,10 +16,44 @@ body {
 .PaginaInicial {
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    justify-content: center;
+    align-items: center;
 }
 h1 {
+  position: absolute;
+  margin-bottom: 70vh;
+  font-size: 10vh;
+}
+input {
+    width: 11vw;
+    height: 6vh;
+    padding-left: 1vw;
+    border-radius: 10vh;
+}
+button {
+    width: 12vw;
+    height: 6vh;
+    border-radius: 10vh;
+    font-size: 3vh;
+    cursor: pointer;
+}
+#Login {
+    width: 14vw;
+    height: 10vh;
     position: absolute;
+    margin-top: 25vh;
+}
+#Cadastrar {
+    position: absolute;
+    margin-top: 55vh;  
+    font-size: 2vh;
+}
+.inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+    margin-bottom: 10vh;
 }
 .container {
     display: flex;
