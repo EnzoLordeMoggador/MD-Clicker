@@ -9,7 +9,17 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.GameDiv {
+    display: none;
+}
+.PaginaInicial {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+h1 {
+    position: absolute;
+}
 .container {
     display: flex;
     flex-direction: column;
