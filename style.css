@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to top, rgba(71, 1, 1, 0.5) , rgba(255, 242, 0, 0.5) );
+    background: rgb(0, 0, 0);
 }
 .GameDiv {
     display: none;
@@ -21,15 +21,21 @@ body {
     text-align: center;
 }
 h1 {
-  position: absolute;
-  margin-bottom: 70vh;
-  font-size: 10vh;
+    color: white;
+    position: absolute;
+    margin-bottom: 70vh;
+    font-size: 10vh;
+}
+
+#pontos{
+    color: white;
 }
 input {
-    width: 11vw;
-    height: 6vh;
+    width: 13vw;
+    height: 7vh;
     padding-left: 1vw;
     border-radius: 10vh;
+    font-size: 1.75vh;
 }
 button {
     width: 12vw;
@@ -43,6 +49,8 @@ button {
     height: 10vh;
     position: absolute;
     margin-top: 25vh;
+    font-size: 5vh;
+
 }
 #Cadastre-se {
     position: absolute;
@@ -58,12 +66,21 @@ button {
     align-items: center;
     display: none;
 }
+
+#backcad{
+    display: none;
+    font-size: 2vh;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
 .inline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 3vh;
     margin-bottom: 10vh;
+    
 }
 .container {
     display: flex;
@@ -75,4 +92,6 @@ button {
     width: 25vw;
     height: 50vh;
     cursor: pointer;
+    border: none;
+    border-radius: 600px;
 }

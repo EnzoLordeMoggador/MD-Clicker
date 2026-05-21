@@ -9,6 +9,11 @@ let Cadastrese = document.getElementById("Cadastre-se");
 let CadastrarDiv = document.getElementById("CadastrarDiv");
 let Cadastrar = document.getElementById("Cadastrar")
 let LoginDiv = document.getElementById("LoginDiv");
+let backcad = document.getElementById("backcad");
+let userc = document.getElementById("userC");
+let emailc = document.getElementById("emailC");
+let senhac = document.getElementById("senhaC");
+
 let G = null;
 
 buttonclicker.addEventListener("click", () => {
@@ -41,4 +46,28 @@ Cadastrese.addEventListener("click", () => {
     Cadastrar.style.display = "flex";
     LoginDiv.style.display = "none";
     CadastrarDiv.style.display = "inline-flex";
+    backcad.style.display = "flex"
+})
+
+// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+backcad.addEventListener("click", () =>{
+    PlayButton.style.display = "block";
+    Cadastrese.style.display = "block";
+    Cadastrar.style.display = "none";
+    LoginDiv.style.display = "block";
+    CadastrarDiv.style.display = "none";
+    backcad.style.display = "none"
+})
+
+Cadastrar.addEventListener("click", () =>{
+    if (userc.value == "" || emailc.value == "" || senhac.value == ""){
+        alert("Coloque Todos os Dados para Poder Cadastrar")
+        let userc = document.getElementById("userC").value = ""
+        let emailc = document.getElementById("emailC").value = ""
+        let senhac = document.getElementById("senhaC").value = ""
+        return;
+      }
+
 })
