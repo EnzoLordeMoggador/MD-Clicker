@@ -9,6 +9,7 @@ let Cadastrese = document.getElementById("Cadastre-se");
 let CadastrarDiv = document.getElementById("CadastrarDiv");
 let Cadastrar = document.getElementById("Cadastrar")
 let LoginDiv = document.getElementById("LoginDiv");
+let upgradebtn = document.querySelector(".upgradesbtn")
 let backcad = document.getElementById("backcad");
 let userc = document.getElementById("userC");
 let emailc = document.getElementById("emailC");
@@ -49,9 +50,14 @@ Cadastrese.addEventListener("click", () => {
     backcad.style.display = "flex"
 })
 
-// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
-// Antonyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+upgradebtn.addEventListener("click", () => {
+    upgradebtn.style.fontSize = "0vh";
+    upgradebtn.style.height = "95vh";
+    upgradebtn.style.marginBottom = "90vh";
+    upgradebtn.style.marginTop = "-31vh";
+    upgradebtn.style.borderRadius = "2vh";
+})
+
 backcad.addEventListener("click", () =>{
     PlayButton.style.display = "block";
     Cadastrese.style.display = "block";
