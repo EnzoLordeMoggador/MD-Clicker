@@ -1,3 +1,4 @@
+
 let emailL = document.getElementById("emailL");
 let senhaL = document.getElementById("senhaL");
 let pontos = document.getElementById("pontos");
@@ -31,16 +32,7 @@ function Cl() {
         buttonclicker.style.transform = `rotate(${G}deg)`;
         requestAnimationFrame(Cl);
 }
-PlayButton.addEventListener("click", () => {
-    
-    if (emailL.value == "" || senhaL.value == ""){
-      alert("Coloque os Dados Do Login")
-      return;
-    }
 
-    PIDiv.style.display = "none"
-    DivGame.style.display = "flex"
-})
 Cadastrese.addEventListener("click", () => {
     PlayButton.style.display = "none";
     Cadastrese.style.display = "none";
@@ -67,13 +59,53 @@ backcad.addEventListener("click", () =>{
     backcad.style.display = "none"
 })
 
-Cadastrar.addEventListener("click", () =>{
+
+PlayButton.addEventListener("click", () => {
+    
+    if (emailL.value == "" || senhaL.value == ""){
+      alert("Coloque os Dados Do Login")
+
+      emailL = document.getElementById("emailL").value = "";
+      senhaL = document.getElementById("senhaL").value = "";
+      return;
+    }
+
+    PIDiv.style.display = "none"
+    DivGame.style.display = "flex"
+})
+Cadastrar.addEventListener("click", async () =>{
     if (userc.value == "" || emailc.value == "" || senhac.value == ""){
-        alert("Coloque Todos os Dados para Poder Cadastrar")
-        let userc = document.getElementById("userC").value = ""
-        let emailc = document.getElementById("emailC").value = ""
-        let senhac = document.getElementById("senhaC").value = ""
+        alert("Coloque Todos os Dados para Poder Cadastrar");
+        userc.value = "";
+        emailc.value = "";
+        senhac.value = "";
         return;
       }
 
+      const dadosC = {
+        nome: userc.value,
+        email: emailc.value,
+        senha: senhac.value,
+      }
+      try { 
+      const response = await fetch("http://localhost:3000/cadastrar", {
+        method: "post",
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify(dadosC)
+      })
+
+      const result = await response.json()
+      alert(result.mensagem)
+
+      if(response.ok){
+        userc.value = "";
+        emailc.value = "";
+        senhac.value = "";
+
+        backcad.click()
+      }
+    } catch (err){
+        console.error("erro ao conectar", err)
+        alert("deu red")
+    }
 })
