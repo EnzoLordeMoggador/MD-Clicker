@@ -1,4 +1,3 @@
-
 let emailL = document.getElementById("emailL");
 let senhaL = document.getElementById("senhaL");
 let pontos = document.getElementById("pontos");
@@ -15,12 +14,17 @@ let backcad = document.getElementById("backcad");
 let userc = document.getElementById("userC");
 let emailc = document.getElementById("emailC");
 let senhac = document.getElementById("senhaC");
-
+let clickupg = document.querySelector(".Click");
+let ClickValue = 1;
+let price = 10
 let G = null;
 
+let click1 = false
+
+
 buttonclicker.addEventListener("click", () => {
-    let valor = parseInt(pontos.innerText);
-    pontos.innerText = valor+1
+    let valor = parseFloat(pontos.innerText);
+    pontos.innerText = valor+ClickValue;
     if (G === null) {
         G = 0;
         Cl();
@@ -42,13 +46,18 @@ Cadastrese.addEventListener("click", () => {
     backcad.style.display = "flex"
 })
 
-upgradebtn.addEventListener("click", () => {
-    upgradebtn.style.fontSize = "0vh";
-    upgradebtn.style.height = "95vh";
-    upgradebtn.style.marginBottom = "90vh";
-    upgradebtn.style.marginTop = "-31vh";
-    upgradebtn.style.borderRadius = "2vh";
+clickupg.addEventListener("click", () => {
+  let value = parseFloat(pontos.innerText)
+    if (value >= price){
+      pontos.innerText = value - price;
+      ClickValue = ClickValue+0.5;
+      price = price*2;
+    }
+  
 })
+
+
+
 
 backcad.addEventListener("click", () =>{
     PlayButton.style.display = "block";
