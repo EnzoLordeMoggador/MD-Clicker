@@ -5,21 +5,28 @@ body, html {
 }
 
 body {
+    font-family: "Ole", cursive;
+    font-weight: 400;
+    font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(0, 47, 88);
 }
 .GameDiv {
-    display: flex;
+    display: none;
+    margin-left: 18vw;
+    width: 100vw;
+    height: 100vh;
 }
 .PaginaInicial {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+
 h1 {
     color: white;
     position: absolute;
@@ -38,11 +45,15 @@ input {
     font-size: 1.75vh;
 }
 button {
+    background: linear-gradient(to right, rgb(0, 139, 120) 30%, cyan 70%);
     width: 12vw;
     height: 6vh;
     border-radius: 10vh;
     font-size: 3vh;
     cursor: pointer;
+}
+button:hover {
+    background: linear-gradient(to right, rgb(0, 139, 14) 30%, rgb(0, 255, 76) 70%);
 }
 #Login {
     width: 14vw;
@@ -87,13 +98,16 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    margin-top: 40vh;
+    margin-left: -8vw;
 }
 #buttonclicker {
     width: 15vw;
     height: 30vh;
     cursor: pointer;
+    position: absolute;
     border-radius: 50vh;
-    margin-bottom: 20vh;
 }
 .upgradeMenu {
     text-align: center;
@@ -105,17 +119,23 @@ button {
     margin-left: 2vw;
 
 }
-.Click {
+.upgradeMenu h1{
+    position: relative;
+    margin: 0;
+}
+#BtnsUPGM {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 3vh;
     margin: 3vh;
-    height: 13vh;
+    height: 10vh;
     font-size: 5vh;
     cursor: pointer;
     background-color: rgb(129, 62, 0);
+}
+.Click {
 }
 .Stage {
     display: flex;
@@ -124,7 +144,7 @@ button {
     align-items: center;
     background-color: black;
     border-radius: 5vh;
-    margin-left: 3vw;
+    margin-left: 2vw;
     width: 50vw;
     height: 99vh;
 }

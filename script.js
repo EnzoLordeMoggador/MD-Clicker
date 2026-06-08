@@ -30,6 +30,18 @@ buttonclicker.addEventListener("click", () => {
         Cl();
     }
 })
+buttonclicker.addEventListener("click", () => {
+    buttonclicker.style.width = "13vw";
+    buttonclicker.style.height = "26vh";
+    setTimeout(() => {
+      buttonclicker.style.width = "17vw";
+      buttonclicker.style.height = "34vh";
+    }, 100);
+    setTimeout(() => {
+      buttonclicker.style.width = "15vw";
+      buttonclicker.style.height = "30vh";
+    }, 100);
+})
 
 function Cl() {
         G += 1
