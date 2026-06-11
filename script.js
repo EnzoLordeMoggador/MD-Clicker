@@ -15,12 +15,13 @@ let userc = document.getElementById("userC");
 let emailc = document.getElementById("emailC");
 let senhac = document.getElementById("senhaC");
 let clickupg = document.querySelector(".Click");
+let priceClickUPG = document.querySelector(".priceClickUPG");
 let ClickValue = 1;
 let price = 10
 let G = null;
-
 let click1 = false
 
+priceClickUPG.textContent = price.toString();
 
 buttonclicker.addEventListener("click", () => {
     let valor = parseFloat(pontos.innerText);
@@ -64,6 +65,7 @@ clickupg.addEventListener("click", () => {
       pontos.innerText = value - price;
       ClickValue = ClickValue+0.5;
       price = price*2;
+      priceClickUPG.textContent = price.toString();
     }
   
 })
