@@ -12,21 +12,68 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(0, 47, 88);
+    user-select: none;
+}
+body::before {
+    content: "";
+    opacity: 0;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+body.configAberto::before {
+    opacity: 1;
+    z-index: 90;
 }
 .GameDiv {
-    display: none;
+    display: flex;
     margin-left: 18vw;
     width: 100vw;
     height: 100vh;
 }
 .PaginaInicial {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-
+.Config, .configE {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    width: 1vw;
+    height: 100vh;
+    border-radius: 5vh;
+    z-index: 99;
+    cursor: pointer;
+}
+.configE {
+    display: none;
+    border-radius: 1vh;
+    
+}
+@keyframes expandir {
+    from {
+        width: 1vw;
+    }
+    to {
+        width: 15vw;
+    }
+}
+.Config:hover .configE {
+    display: flex;
+    animation: expandir 0.5s;
+    width: 15vw;
+}
 h1 {
     color: white;
     position: absolute;
@@ -117,7 +164,7 @@ button:hover {
     width: 25vw;
     height: 99vh;
     margin-left: 2vw;
-
+    box-shadow: 2vh 1vh 2px white;
 }
 .upgradeMenu h1{
     position: relative;
@@ -134,7 +181,8 @@ button:hover {
     height: 14vh;
     font-size: 5vh;
     cursor: pointer;
-    background-color: rgb(129, 62, 0);
+    background-color: rgb(157, 128, 0);
+    box-shadow: 1vh 1vh 2px white;
 }
 .Click {
     display: flex;
@@ -146,18 +194,30 @@ button:hover {
     display: none;
     justify-content: center;
     flex-direction: column;
+    position: absolute;
     align-items: center;
     text-align: center;
     border-radius: 3vh; 
-    margin-right:  100vh;
+    margin-right:  25vh;
     height: 14vh;
+    width: 8vw;
     font-size: 5vh;
     cursor: pointer;
-    background-color: rgb(129, 62, 0);
+    background-color: rgb(157, 128, 0);
+    gap: 5vh;
 }
-
+@keyframes movimentar {
+    from {
+        margin-right: 25vh;
+    }
+    to{
+        margin-right: 40vh;
+    };
+}
 .Click:hover .hoverdiv{
     display: flex;
+    animation: movimentar 0.5s;
+    margin-right: 40vh;
 }
 .Click p  {
     margin: 0;
@@ -174,4 +234,5 @@ button:hover {
     margin-left: 2vw;
     width: 50vw;
     height: 99vh;
+    box-shadow: 0 0 10vh 2px rgb(251, 255, 0);
 }

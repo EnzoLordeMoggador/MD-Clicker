@@ -16,6 +16,7 @@ let emailc = document.getElementById("emailC");
 let senhac = document.getElementById("senhaC");
 let clickupg = document.querySelector(".Click");
 let priceClickUPG = document.querySelector(".priceClickUPG");
+let Config = document.querySelector(".Config");
 let ClickValue = 1;
 let price = 10
 let G = null;
@@ -131,4 +132,10 @@ Cadastrar.addEventListener("click", async () =>{
         console.error("erro ao conectar", err)
         alert("deu red")
     }
+})
+Config.addEventListener("mouseenter", () => {
+    document.body.classList.add("configAberto");
+})
+Config.addEventListener("mouseleave", () => {
+    document.body.classList.remove("configAberto");
 })
