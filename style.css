@@ -83,6 +83,12 @@ h1 {
 
 #pontos{
     color: white;
+    font-size: 7vh;
+    margin-top: 10vh;
+}
+#mdcoins {
+    font-size: 4vh;
+    top: -30vh;
 }
 input {
     width: 13vw;
@@ -148,6 +154,18 @@ button:hover {
     position: absolute;
     margin-top: 40vh;
     margin-left: -8vw;
+}
+.VC {
+    display: flex;
+    flex-direction: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 4vh;
+    gap: 1vh;
+    bottom: 12vh;
+    color: white;
+    position: absolute;
 }
 #buttonclicker {
     width: 15vw;

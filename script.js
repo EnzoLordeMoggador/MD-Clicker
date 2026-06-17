@@ -17,13 +17,16 @@ let senhac = document.getElementById("senhaC");
 let clickupg = document.querySelector(".Click");
 let priceClickUPG = document.querySelector(".priceClickUPG");
 let Config = document.querySelector(".Config");
+let SCV = document.querySelector(".SCV");
+let a = document.querySelector(".A");
 let ClickValue = 1;
 let price = 10
 let G = null;
 let click1 = false
+let ClicksPerSecond = 1
 
 priceClickUPG.textContent = price.toString();
-
+SCV.textContent = ClickValue.toString(); 
 buttonclicker.addEventListener("click", () => {
     let valor = parseFloat(pontos.innerText);
     pontos.innerText = valor+ClickValue;
@@ -65,6 +68,7 @@ clickupg.addEventListener("click", () => {
     if (value >= price){
       pontos.innerText = value - price;
       ClickValue = ClickValue+0.5;
+      SCV.textContent = ClickValue.toString();
       price = price*2;
       priceClickUPG.textContent = price.toString();
     }
@@ -138,4 +142,10 @@ Config.addEventListener("mouseenter", () => {
 })
 Config.addEventListener("mouseleave", () => {
     document.body.classList.remove("configAberto");
+})
+a.addEventListener("click", () => {
+  setInterval(() => {
+    let ClicksPerSecondd = parseFloat(pontos.innerText);
+    pontos.innerText = ClicksPerSecondd+ClicksPerSecond;
+  }, 1000);
 })
