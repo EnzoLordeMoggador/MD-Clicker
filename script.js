@@ -16,16 +16,18 @@ let emailc = document.getElementById("emailC");
 let senhac = document.getElementById("senhaC");
 let clickupg = document.querySelector(".Click");
 let priceClickUPG = document.querySelector(".priceClickUPG");
+let priceFoguetesUPG = document.querySelector(".priceFoguetesUPG");
 let Config = document.querySelector(".Config");
 let SCV = document.querySelector(".SCV");
-let a = document.querySelector(".A");
+let Foguetes = document.querySelector(".Foguetes");
 let ClickValue = 1;
-let price = 10
+let priceClick = 10
+let priceFoguetes = 100;
 let G = null;
 let click1 = false
 let ClicksPerSecond = 1
 
-priceClickUPG.textContent = price.toString();
+priceClickUPG.textContent = priceClick.toString();
 SCV.textContent = ClickValue.toString(); 
 buttonclicker.addEventListener("click", () => {
     let valor = parseFloat(pontos.innerText);
@@ -36,16 +38,7 @@ buttonclicker.addEventListener("click", () => {
     }
 })
 buttonclicker.addEventListener("click", () => {
-    buttonclicker.style.width = "13vw";
-    buttonclicker.style.height = "26vh";
-    setTimeout(() => {
-      buttonclicker.style.width = "17vw";
-      buttonclicker.style.height = "34vh";
-    }, 100);
-    setTimeout(() => {
-      buttonclicker.style.width = "15vw";
-      buttonclicker.style.height = "30vh";
-    }, 100);
+    Pulsar();
 })
 
 function Cl() {
@@ -62,21 +55,40 @@ Cadastrese.addEventListener("click", () => {
     CadastrarDiv.style.display = "inline-flex";
     backcad.style.display = "flex"
 })
+function Pulsar () {
+  buttonclicker.style.width = "13vw";
+  buttonclicker.style.height = "26vh";
+  setTimeout(() => {
+    buttonclicker.style.width = "17vw";
+    buttonclicker.style.height = "34vh";
+  }, 100);
+  setTimeout(() => {
+    buttonclicker.style.width = "15vw";
+    buttonclicker.style.height = "30vh";
+  }, 100);
+}
 
 clickupg.addEventListener("click", () => {
   let value = parseFloat(pontos.innerText)
-    if (value >= price){
-      pontos.innerText = value - price;
+    if (value >= priceClick){
+      pontos.innerText = value - priceClick;
       ClickValue = ClickValue+0.5;
       SCV.textContent = ClickValue.toString();
-      price = price*2;
-      priceClickUPG.textContent = price.toString();
+      priceClick = priceClick*2;
+      priceClickUPG.textContent = priceClick.toString();
     }
   
 })
-
-
-
+Foguetes.addEventListener("click", () => {
+  let valor = parsefloat(pontos.innerText)
+  if (valor >= priceFoguetes) {
+    setInterval(() => {
+      let CPS = parseFloat(pontos.innerText);
+      pontos.innerText = CPS+ClicksPerSecond;
+      Pulsar();
+    }, 1000);
+  }})
+  
 
 backcad.addEventListener("click", () =>{
     PlayButton.style.display = "block";
@@ -101,6 +113,17 @@ PlayButton.addEventListener("click", () => {
     PIDiv.style.display = "none"
     DivGame.style.display = "flex"
 })
+
+Config.addEventListener("mouseenter", () => {
+  document.body.classList.add("configAberto");
+})
+Config.addEventListener("mouseleave", () => {
+  document.body.classList.remove("configAberto");
+})
+
+
+
+// CODIGO DO BANCO DE DADOS
 Cadastrar.addEventListener("click", async () =>{
     if (userc.value == "" || emailc.value == "" || senhac.value == ""){
         alert("Coloque Todos os Dados para Poder Cadastrar");
@@ -136,16 +159,4 @@ Cadastrar.addEventListener("click", async () =>{
         console.error("erro ao conectar", err)
         alert("deu red")
     }
-})
-Config.addEventListener("mouseenter", () => {
-    document.body.classList.add("configAberto");
-})
-Config.addEventListener("mouseleave", () => {
-    document.body.classList.remove("configAberto");
-})
-a.addEventListener("click", () => {
-  setInterval(() => {
-    let ClicksPerSecondd = parseFloat(pontos.innerText);
-    pontos.innerText = ClicksPerSecondd+ClicksPerSecond;
-  }, 1000);
 })

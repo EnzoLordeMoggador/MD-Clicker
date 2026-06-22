@@ -224,6 +224,9 @@ button:hover {
     background-color: rgb(157, 128, 0);
     gap: 5vh;
 }
+#fogueteshover {
+    top: 32.6vh;
+}
 @keyframes movimentar {
     from {
         margin-right: 25vh;
@@ -231,6 +234,11 @@ button:hover {
     to{
         margin-right: 40vh;
     };
+}
+.Foguetes:hover #fogueteshover {
+    display: flex;
+    animation: movimentar 0.5s;
+    margin-right: 40vh;
 }
 .Click:hover .hoverdiv{
     display: flex;
