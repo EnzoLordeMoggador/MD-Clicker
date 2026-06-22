@@ -23,29 +23,20 @@ let Foguetes = document.querySelector(".Foguetes");
 let ClickValue = 1;
 let priceClick = 10
 let priceFoguetes = 100;
-let G = null;
-let click1 = false
-let ClicksPerSecond = 1
+let click1 = false;
+let ClicksPerSecond = 0;
 
 priceClickUPG.textContent = priceClick.toString();
+priceFoguetesUPG.textContent = priceFoguetes.toString();
 SCV.textContent = ClickValue.toString(); 
 buttonclicker.addEventListener("click", () => {
     let valor = parseFloat(pontos.innerText);
     pontos.innerText = valor+ClickValue;
-    if (G === null) {
-        G = 0;
-        Cl();
-    }
 })
 buttonclicker.addEventListener("click", () => {
     Pulsar();
 })
 
-function Cl() {
-        G += 1
-        buttonclicker.style.transform = `rotate(${G}deg)`;
-        requestAnimationFrame(Cl);
-}
 
 Cadastrese.addEventListener("click", () => {
     PlayButton.style.display = "none";
@@ -56,15 +47,15 @@ Cadastrese.addEventListener("click", () => {
     backcad.style.display = "flex"
 })
 function Pulsar () {
-  buttonclicker.style.width = "13vw";
-  buttonclicker.style.height = "26vh";
+  buttonclicker.style.width = "33vw";
+  buttonclicker.style.height = "76vh";
   setTimeout(() => {
-    buttonclicker.style.width = "17vw";
-    buttonclicker.style.height = "34vh";
+    buttonclicker.style.width = "37vw";
+    buttonclicker.style.height = "74vh";
   }, 100);
   setTimeout(() => {
-    buttonclicker.style.width = "15vw";
-    buttonclicker.style.height = "30vh";
+    buttonclicker.style.width = "35vw";
+    buttonclicker.style.height = "70vh";
   }, 100);
 }
 
@@ -80,13 +71,18 @@ clickupg.addEventListener("click", () => {
   
 })
 Foguetes.addEventListener("click", () => {
-  let valor = parsefloat(pontos.innerText)
+  let valor = parseFloat(pontos.innerText)
   if (valor >= priceFoguetes) {
+    pontos.innerText = valor - priceFoguetes;
+    ClicksPerSecond = ClicksPerSecond + 1;
+    priceFoguetes = priceFoguetes*2;
+    priceFoguetesUPG.textContent = priceFoguetes.toString();
     setInterval(() => {
       let CPS = parseFloat(pontos.innerText);
       pontos.innerText = CPS+ClicksPerSecond;
       Pulsar();
     }, 1000);
+
   }})
   
 
