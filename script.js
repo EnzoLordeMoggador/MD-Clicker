@@ -21,13 +21,18 @@ let priceFumacasUPG = document.querySelector(".priceFumacasUPG");
 let Config = document.querySelector(".Config");
 let SCV = document.querySelector(".SCV");
 let Foguetes = document.querySelector(".Foguetes");
+let Fumacas = document.querySelector(".Fumacas");
+let CDN = document.querySelector(".CDN");
 let ClickValue = 1;
 let priceClick = 10;
 let priceFoguetes = 500;
-let priceFumacas = 2000;
+let priceFumacas = 2;
 let click1 = false;
 let ClicksPerSecond = 0;
+let ClicksCount = 0;
+let FumacaUpgrade = true;
 
+CDN.textContent = ClicksCount.toString();
 priceClickUPG.textContent = priceClick.toString();
 priceFoguetesUPG.textContent = priceFoguetes.toString();
 priceFumacasUPG.textContent = priceFumacas.toString();
@@ -35,6 +40,9 @@ SCV.textContent = ClickValue.toString();
 buttonclicker.addEventListener("click", () => {
     let valor = parseFloat(pontos.innerText);
     pontos.innerText = valor+ClickValue;
+    if (FumacaUpgrade === true) {
+      SoltarFumaca();
+    }
 })
 buttonclicker.addEventListener("click", () => {
     Pulsar();
@@ -87,7 +95,23 @@ Foguetes.addEventListener("click", () => {
     }, 1000);
 
   }})
-  
+Fumacas.addEventListener("click", () => {
+ let valor = parseFloat(pontos.innerText)
+ if (valor >= priceFumacas) {
+    pontos.innerText = valor - priceFumacas;
+    ClicksCount = 0;
+    FumacaUpgrade = true;
+  }})
+function SoltarFumaca() {
+  console.log(FumacaUpgrade)
+  let valor = parseFloat(pontos.innerText)
+  CDN.textContent = ClicksCount.toString();
+    if (ClicksCount == 9) {
+      ClicksCount = 0;
+      pontos.innerText = valor + 200;
+      ClicksCount = ClicksCount + 1;
+    }
+  }
 
 backcad.addEventListener("click", () =>{
     PlayButton.style.display = "block";
