@@ -175,7 +175,7 @@ button:hover {
     position: absolute;
 }
 .canhaoDnevoa {
-    display: flex;
+    display: none;
     flex-direction: inline;
     justify-content: center;
     align-items: center;

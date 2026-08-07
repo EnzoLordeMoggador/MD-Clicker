@@ -23,6 +23,7 @@ let SCV = document.querySelector(".SCV");
 let Foguetes = document.querySelector(".Foguetes");
 let Fumacas = document.querySelector(".Fumacas");
 let CDN = document.querySelector(".CDN");
+let canhaoDnevoa = document.querySelector(".canhaoDnevoa");
 let ClickValue = 1;
 let priceClick = 10;
 let priceFoguetes = 500;
@@ -30,7 +31,7 @@ let priceFumacas = 2;
 let click1 = false;
 let ClicksPerSecond = 0;
 let ClicksCount = 0;
-let FumacaUpgrade = true;
+let FumacaUpgrade = false;
 
 CDN.textContent = ClicksCount.toString();
 priceClickUPG.textContent = priceClick.toString();
@@ -38,13 +39,17 @@ priceFoguetesUPG.textContent = priceFoguetes.toString();
 priceFumacasUPG.textContent = priceFumacas.toString();
 SCV.textContent = ClickValue.toString(); 
 buttonclicker.addEventListener("click", () => {
+    
     let valor = parseFloat(pontos.innerText);
-    pontos.innerText = valor+ClickValue;
-    if (FumacaUpgrade === true) {
-      SoltarFumaca();
-    }
+    let valormoreclickvalue = valor+ClickValue
+    pontos.innerText = valormoreclickvalue.toFixed(0);
+
+
 })
 buttonclicker.addEventListener("click", () => {
+  if (FumacaUpgrade == true){
+    SoltarFumaca();
+  }
     Pulsar();
 })
 
@@ -71,13 +76,16 @@ function Pulsar () {
 }
 
 clickupg.addEventListener("click", () => {
-  let value = parseFloat(pontos.innerText)
+  let value = parseInt(pontos.innerText)
     if (value >= priceClick){
-      pontos.innerText = value - priceClick;
-      ClickValue = ClickValue+0.5;
+      let valuemPrice = value - priceClick;
+      pontos.innerText = valuemPrice.toFixed(2)
+      ClickValue = ClickValue+1;
+      
       SCV.textContent = ClickValue.toString();
-      priceClick = priceClick*2;
-      priceClickUPG.textContent = priceClick.toString();
+      priceClick = priceClick*1.2;
+      priceClickUPG.textContent = priceClick.toFixed(1).toString();
+      
     }
   
 })
@@ -101,15 +109,15 @@ Fumacas.addEventListener("click", () => {
     pontos.innerText = valor - priceFumacas;
     ClicksCount = 0;
     FumacaUpgrade = true;
+   canhaoDnevoa.style.display = "flex";
   }})
 function SoltarFumaca() {
-  console.log(FumacaUpgrade)
+  ClicksCount = ClicksCount + 1;
   let valor = parseFloat(pontos.innerText)
   CDN.textContent = ClicksCount.toString();
-    if (ClicksCount == 9) {
+    if (ClicksCount == 10) {
       ClicksCount = 0;
       pontos.innerText = valor + 200;
-      ClicksCount = ClicksCount + 1;
     }
   }
 
