@@ -33,13 +33,13 @@ body.configAberto::before {
     z-index: 90;
 }
 .GameDiv {
-    display: flex;
+    display: none;
     margin-left: 18vw;
     width: 100vw;
     height: 100vh;
 }
 .PaginaInicial {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
