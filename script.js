@@ -18,23 +18,31 @@ let clickupg = document.querySelector(".Click");
 let priceClickUPG = document.querySelector(".priceClickUPG");
 let priceFoguetesUPG = document.querySelector(".priceFoguetesUPG");
 let priceFumacasUPG = document.querySelector(".priceFumacasUPG");
+let priceOruamUPG = document.querySelector(".priceOruamUPG");
 let Config = document.querySelector(".Config");
 let SCV = document.querySelector(".SCV");
 let Foguetes = document.querySelector(".Foguetes");
 let Fumacas = document.querySelector(".Fumacas");
+let OruamPNG = document.querySelector(".OruamPNG");
+let Oruam = document.querySelector(".Oruam");
+
 let CDN = document.querySelector(".CDN");
 let canhaoDnevoa = document.querySelector(".canhaoDnevoa");
 let ClickValue = 1;
 let priceClick = 10;
 let priceFoguetes = 200;
 let priceFumacas = 500;
+let priceOruam = 10000;
 let click1 = false;
 let ClicksPerSecond = 0;
 let ClicksCount = 0;
 let BonusFumaca = 20;
 let FumacaUpgrade = false;
 
+
+
 CDN.textContent = ClicksCount.toString();
+priceOruamUPG.textContent = priceOruam.toString();
 priceClickUPG.textContent = priceClick.toString();
 priceFoguetesUPG.textContent = priceFoguetes.toString();
 priceFumacasUPG.textContent = priceFumacas.toString();
@@ -108,7 +116,8 @@ Foguetes.addEventListener("click", () => {
 Fumacas.addEventListener("click", () => {
  let valor = parseFloat(pontos.innerText)
  if (valor >= priceFumacas) {
-    pontos.innerText = valor - priceFumacas;
+    let valuempricef = valor - priceFumacas;
+    pontos.innerText = valuempricef.toFixed(1);
     ClicksCount = 0;
     FumacaUpgrade = true;
     priceFumacas = priceFumacas * 1.4;
@@ -126,6 +135,14 @@ function SoltarFumaca() {
       pontos.innerText = valor + BonusFumaca;
     }
   }
+Oruam.addEventListener("click", () => {
+  let valor = parseFloat(pontos.innerText)
+  if (valor >= priceOruam) {
+    let valuempricef = valor - priceOruam;
+    pontos.innerText = valuempricef.toFixed(1);
+    OruamPNG.style.display = "flex";
+  }
+})
 
 backcad.addEventListener("click", () =>{
     PlayButton.style.display = "block";

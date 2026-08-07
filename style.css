@@ -266,7 +266,12 @@ button:hover {
     animation: movimentar 0.5s;
     margin-right: 40vh;
 }
-.Click p, .Foguetes p, .Fumacas p {
+.Oruam:hover .hoverdiv {
+    display: flex;
+    animation: movimentar 0.5s;
+    margin-right: 40vh;
+}
+.Click p, .Foguetes p, .Fumacas p, .Oruam p {
     margin: 0;
     padding: 0;
     line-height: 0;
@@ -286,4 +291,9 @@ button:hover {
     background-position: center;
     background-size: 120vh;
     background-repeat: no-repeat;
+}
+.OruamPNG {
+    display: none;
+    width: 17vw;
+    height: 50vh;
 }
