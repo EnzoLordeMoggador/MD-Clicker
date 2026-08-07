@@ -26,11 +26,12 @@ let CDN = document.querySelector(".CDN");
 let canhaoDnevoa = document.querySelector(".canhaoDnevoa");
 let ClickValue = 1;
 let priceClick = 10;
-let priceFoguetes = 500;
-let priceFumacas = 2;
+let priceFoguetes = 200;
+let priceFumacas = 500;
 let click1 = false;
 let ClicksPerSecond = 0;
 let ClicksCount = 0;
+let BonusFumaca = 20;
 let FumacaUpgrade = false;
 
 CDN.textContent = ClicksCount.toString();
@@ -42,7 +43,7 @@ buttonclicker.addEventListener("click", () => {
     
     let valor = parseFloat(pontos.innerText);
     let valormoreclickvalue = valor+ClickValue
-    pontos.innerText = valormoreclickvalue.toFixed(0);
+    pontos.innerText = valormoreclickvalue.toFixed(1);
 
 
 })
@@ -79,7 +80,7 @@ clickupg.addEventListener("click", () => {
   let value = parseInt(pontos.innerText)
     if (value >= priceClick){
       let valuemPrice = value - priceClick;
-      pontos.innerText = valuemPrice.toFixed(2)
+      pontos.innerText = valuemPrice.toFixed(1)
       ClickValue = ClickValue+1;
       
       SCV.textContent = ClickValue.toString();
@@ -92,10 +93,11 @@ clickupg.addEventListener("click", () => {
 Foguetes.addEventListener("click", () => {
   let valor = parseFloat(pontos.innerText)
   if (valor >= priceFoguetes) {
-    pontos.innerText = valor - priceFoguetes;
+    let valuempricef = valor - priceFoguetes;
+    pontos.innerText = valuempricef.toFixed(1);
     ClicksPerSecond = ClicksPerSecond + 1;
-    priceFoguetes = priceFoguetes*2;
-    priceFoguetesUPG.textContent = priceFoguetes.toString();
+    priceFoguetes = priceFoguetes*1.15;
+    priceFoguetesUPG.textContent = priceFoguetes.toFixed(1).toString();
     setInterval(() => {
       let CPS = parseFloat(pontos.innerText);
       pontos.innerText = CPS+ClicksPerSecond;
@@ -109,7 +111,11 @@ Fumacas.addEventListener("click", () => {
     pontos.innerText = valor - priceFumacas;
     ClicksCount = 0;
     FumacaUpgrade = true;
-   canhaoDnevoa.style.display = "flex";
+    priceFumacas = priceFumacas * 1.4;
+    
+    priceFumacasUPG.textContent = priceFumacas.toFixed(1).toString();
+    BonusFumaca = BonusFumaca*1.5;
+    canhaoDnevoa.style.display = "flex";
   }})
 function SoltarFumaca() {
   ClicksCount = ClicksCount + 1;
@@ -117,7 +123,7 @@ function SoltarFumaca() {
   CDN.textContent = ClicksCount.toString();
     if (ClicksCount == 10) {
       ClicksCount = 0;
-      pontos.innerText = valor + 200;
+      pontos.innerText = valor + BonusFumaca;
     }
   }
 
