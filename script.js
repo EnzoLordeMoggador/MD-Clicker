@@ -72,15 +72,15 @@ Cadastrese.addEventListener("click", () => {
     backcad.style.display = "flex"
 })
 function Pulsar () {
-  buttonclicker.style.width = "33vw";
-  buttonclicker.style.height = "76vh";
+  buttonclicker.style.width = "13vw";
+  buttonclicker.style.height = "23vh";
   setTimeout(() => {
-    buttonclicker.style.width = "37vw";
-    buttonclicker.style.height = "74vh";
+    buttonclicker.style.width = "17vw";
+    buttonclicker.style.height = "27vh";
   }, 100);
   setTimeout(() => {
-    buttonclicker.style.width = "35vw";
-    buttonclicker.style.height = "70vh";
+    buttonclicker.style.width = "15vw";
+    buttonclicker.style.height = "25vh";
   }, 100);
 }
 
@@ -214,3 +214,21 @@ Cadastrar.addEventListener("click", async () =>{
         alert("deu red")
     }
 })
+
+
+const overlay = document.getElementById('modal-overlay');
+const gameContent = document.querySelector('.game-container'); // ajuste pro seletor real do seu jogo
+
+document.getElementById('btn-guest').addEventListener('click', () => {
+  overlay.style.display = 'none';
+  gameContent.classList.remove('game-blocked');
+  // aqui você inicia o jogo em modo convidado
+});
+
+document.getElementById('btn-login').addEventListener('click', () => {
+  // aqui você abre seu formulário de login/cadastro
+  // pode trocar o conteúdo do .modal-box por um form, por exemplo
+  overlay.style.display = 'none';
+  PIDiv.style.display = "flex"
+  DivGame.style.display = "none"
+});

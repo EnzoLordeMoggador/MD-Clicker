@@ -12,26 +12,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <div class="PaginaInicial">
-        <h1>MD CLICKER</h1>
-        <div id="LoginDiv" class="inline">
-            <input id="emailL" type="text" placeholder="Email">
-            <input id="senhaL" type="password" placeholder="Senha">
+        <div class="spotlight" aria-hidden="true"></div>
+
+        <div class="marquee">
+            <h1>MD CLICKER</h1>
+            <p class="eyebrow">✦ Acesso Backstage ✦</p>
         </div>
-        <div id="CadastrarDiv" class="inline">
-            <input id="userC" type="text" placeholder="User">
-            <input id="emailC" type="text" placeholder="Email">
-            <input id="senhaC" type="password" placeholder="Senha">
+
+        <div class="ticket-stub">
+            <span class="ticket-hole"></span>
+            <p class="ticket-kicker">Passe All Access · Não Transferível</p>
+
+            <div id="LoginDiv" class="inline ticket-fields">
+                <label class="field">
+                    <span>Email</span>
+                    <input id="emailL" type="text" placeholder="seu@email.com">
+                </label>
+                <label class="field">
+                    <span>Senha</span>
+                    <input id="senhaL" type="password" placeholder="••••••••">
+                </label>
+            </div>
+
+            <div id="CadastrarDiv" class="inline ticket-fields">
+                <label class="field">
+                    <span>Artista</span>
+                    <input id="userC" type="text" placeholder="Seu nome de palco">
+                </label>
+                <label class="field">
+                    <span>Email</span>
+                    <input id="emailC" type="text" placeholder="seu@email.com">
+                </label>
+                <label class="field">
+                    <span>Senha</span>
+                    <input id="senhaC" type="password" placeholder="••••••••">
+                </label>
+            </div>
+
+            <div class="tear-line" aria-hidden="true"></div>
+
+            <div class="ticket-actions">
+                <button id="Login">Entrar no Show</button>
+                <button id="Cadastrar">Confirmar Acesso</button>
+                <button id="Cadastre-se">Sem ingresso? Cadastre-se</button>
+                <button id="backcad">← Voltar pro login</button>
+            </div>
+
+            <div class="barcode" aria-hidden="true"></div>
         </div>
-        
-        <button id="Login">Jogar</button>
-        <button id="Cadastre-se">Cadastre-se</button>
-        <button id="Cadastrar">Cadastrar</button>
-        <br>
-        <button id="backcad">Voltar</button>
     </div>
     <div class="GameDiv">
         <div class="Config">
@@ -48,7 +81,7 @@
             <div class="VC">
                 <p>Click</p> <p>:</p> <p class="SCV"> </p>
             </div>
-            <img src="https://i.ibb.co/k6cX97k9/pixil-frame-0.png" alt="batata" id="buttonclicker">
+            <img src="https://i.ibb.co/Xr3TgpcS/Show-Box-removebg-preview.png" alt="batata" id="buttonclicker">
         </div>
         <div class="Stage">
             <img class="OruamPNG" src="https://i.ibb.co/ZP5hdWf/oruam-1.png" alt="">
@@ -82,6 +115,12 @@
              </div>
         </div>
      </div>
+    </div>
+    <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-box">
+       <button id="btn-guest" class="modal-btn">Jogar como Convidado</button>
+        <button id="btn-login" class="modal-btn">Login / Cadastro</button>
+      </div>
     </div>
 </body>
 <script src="script.js"></script>

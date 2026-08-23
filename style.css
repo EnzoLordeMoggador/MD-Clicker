@@ -33,17 +33,65 @@ body.configAberto::before {
     z-index: 90;
 }
 .GameDiv {
-    display: none;
+    display: flex;
     margin-left: 18vw;
     width: 100vw;
     height: 100vh;
 }
 .PaginaInicial {
-    display: flex;
+    display: none;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100vw;
+    min-height: 90vh;
+    overflow: hidden;
+    gap: 3vh;
+    padding: 4vh 0;
+}
+.PaginaInicial .spotlight {
+    position: absolute;
+    top: -20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    height: 90vh;
+    background: radial-gradient(ellipse at center, rgba(255, 214, 130, 0.16) 0%, rgba(255, 90, 31, 0.07) 35%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: holofote 6s ease-in-out infinite;
+}
+@keyframes holofote {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .PaginaInicial .spotlight { animation: none; }
+}
+.marquee {
+    top: -8vh;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+.marquee h1 {
+    position: relative;
+    margin: 0;
+    font-size: 8vh;
+    text-shadow: 0 0 3vh rgba(255, 197, 24, 0.55), 0 0 1vh rgba(255, 90, 31, 0.6);
+}
+.eyebrow {
+    margin: 0;
+    font-family: "Oswald", sans-serif;
+    font-size: 2vh;
+    letter-spacing: 0.6vh;
+    text-transform: uppercase;
+    color: #f5c518;
 }
 .gifEx {
     width: 20px;
@@ -97,12 +145,41 @@ h1 {
     font-size: 4vh;
     top: -30vh;
 }
-input {
-    width: 13vw;
-    height: 7vh;
-    padding-left: 1vw;
-    border-radius: 10vh;
-    font-size: 1.75vh;
+.ticket-fields input {
+    width: 100%;
+    height: 5.5vh;
+    box-sizing: border-box;
+    padding: 0 0.5vw;
+    border: none;
+    border-bottom: 0.3vh solid #c9a227;
+    border-radius: 0;
+    background: transparent;
+    font-family: "Oswald", sans-serif;
+    font-size: 2vh;
+    color: #241a08;
+}
+.ticket-fields input::placeholder {
+    color: #8a7451;
+    font-weight: 300;
+}
+.ticket-fields input:focus {
+    outline: none;
+    border-bottom-color: #ff5a1f;
+    background: rgba(255, 90, 31, 0.06);
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6vh;
+    text-align: left;
+}
+.field span {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5vh;
+    letter-spacing: 0.3vh;
+    text-transform: uppercase;
+    color: #7a5c1e;
 }
 button {
     background: linear-gradient(to right, rgb(0, 139, 120) 30%, cyan 70%);
@@ -115,43 +192,121 @@ button {
 button:hover {
     background: linear-gradient(to right, rgb(0, 139, 14) 30%, rgb(0, 255, 76) 70%);
 }
-#Login {
-    width: 14vw;
-    height: 10vh;
-    position: absolute;
-    margin-top: 25vh;
-    font-size: 5vh;
-
+.ticket-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4vh;
 }
-#Cadastre-se {
-    position: absolute;
-    margin-top: 55vh;  
-    font-size: 2vh;
+#Login, #Cadastrar {
+    width: 100%;
+    height: 6.5vh;
+    border-radius: 0.8vh;
+    background: linear-gradient(to right, #ff5a1f 0%, #f5c518 100%);
+    color: #1a1006;
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+    font-size: 2.4vh;
+    text-transform: uppercase;
+    letter-spacing: 0.2vh;
+    box-shadow: 0 0.6vh 1.5vh rgba(255, 90, 31, 0.35);
 }
-#CadastrarDiv {
-    display: none;
+#Login:hover, #Cadastrar:hover {
+    background: linear-gradient(to right, #ff7a3f 0%, #ffd94a 100%);
 }
 #Cadastrar {
-    font-size: 2vh;
-    justify-content: center;
-    align-items: center;
     display: none;
 }
-
-#backcad{
-    display: none;
-    font-size: 2vh;
-    justify-content: center;
-    align-items: center;
+#Cadastre-se, #backcad {
+    background: none;
+    width: auto;
+    height: auto;
+    border: none;
+    box-shadow: none;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.7vh;
+    letter-spacing: 0.1vh;
+    color: #7a5c1e;
+    text-decoration: underline;
+    text-underline-offset: 0.4vh;
+}
+#Cadastre-se:hover, #backcad:hover {
+    background: none;
+    color: #ff5a1f;
+}
+#backcad {
     display: none;
 }
-.inline {
-    display: inline-flex;
+.ticket-stub {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    width: min(26vw, 420px);
+    background: repeating-linear-gradient(0deg, #f3e9d2, #f3e9d2 3px, #efe3c6 3px, #efe3c6 4px);
+    border: 0.25vh dashed #c9a227;
+    border-radius: 1.6vh;
+    padding: 4vh 2.2vw 3vh;
+    box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.5), inset 0 0 0 0.5vh rgba(212, 160, 23, 0.15);
+    transform: rotate(-1.2deg);
+}
+.ticket-hole {
+    position: absolute;
+    top: 1.6vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2vh;
+    height: 2vh;
+    border-radius: 50%;
+    background: #0b0b12;
+    box-shadow: inset 0 0 0 0.2vh #c9a227;
+}
+.ticket-kicker {
+    margin: 0.5vh 0 2vh;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.3vh;
+    letter-spacing: 0.25vh;
+    text-transform: uppercase;
+    color: #8a7451;
+}
+.inline.ticket-fields {
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
-    gap: 3vh;
-    margin-bottom: 10vh;
-    
+    gap: 2.6vh;
+    width: 100%;
+}
+#LoginDiv.ticket-fields {
+    display: flex;
+}
+#CadastrarDiv.ticket-fields {
+    display: none;
+}
+.tear-line {
+    position: relative;
+    width: 100%;
+    height: 0;
+    margin: 3vh 0 2.4vh;
+    border-top: 0.25vh dashed #c9a227;
+}
+.tear-line::before, .tear-line::after {
+    content: "";
+    position: absolute;
+    top: -1vh;
+    width: 2vh;
+    height: 2vh;
+    border-radius: 50%;
+    background: #0b0b12;
+}
+.tear-line::before { left: -3vh; }
+.tear-line::after { right: -3vh; }
+.barcode {
+    margin-top: 2.6vh;
+    width: 80%;
+    height: 4vh;
+    background: repeating-linear-gradient(90deg, #241a08 0, #241a08 2px, transparent 2px, transparent 5px, #241a08 5px, #241a08 6px, transparent 6px, transparent 10px);
+    opacity: 0.75;
 }
 .container {
     display: flex;
@@ -186,40 +341,81 @@ button:hover {
     gap: 1vh;
 }
 #buttonclicker {
-    width: 35vw;
-    height: 70vh;
+    width: 15vw;
+    height: 25vh;
     cursor: pointer;
     position: absolute;
-    top: 2vh;
+    top: 25vh;
     border-radius: 50vh;
 }
 .upgradeMenu {
+    position: relative;
     text-align: center;
-    border-radius: 5vh;
-    background-color: black;
+    border-radius: 2vh;
+    background: linear-gradient(180deg, #0b0b12 0%, #161019 100%);
+    border: 0.25vh dashed #c9a227;
     color: white;
     width: 25vw;
     height: 99vh;
     margin-left: 2vw;
-    box-shadow: 2vh 1vh 2px white;
+    box-shadow: 0 0 4vh rgba(212, 160, 23, 0.25), inset 0 0 6vh rgba(255, 90, 31, 0.06);
+}
+.upgradeMenu::before {
+    content: "";
+    position: absolute;
+    top: -12vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40vw;
+    height: 40vh;
+    background: radial-gradient(ellipse at center, rgba(255, 197, 24, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
 }
 .upgradeMenu h1{
     position: relative;
-    margin: 0;
+    margin: 3vh 0 4vh;
+    font-size: 6vh;
+    text-shadow: 0 0 2.5vh rgba(255, 197, 24, 0.55), 0 0 1vh rgba(255, 90, 31, 0.6);
 }
 #BtnsUPGM {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 3vh; 
+    border-radius: 1.4vh;
     margin: 3vh;
     height: 14vh;
     font-size: 5vh;
     cursor: pointer;
-    background-color: rgb(157, 128, 0);
-    box-shadow: 1vh 1vh 2px white;
+    background: linear-gradient(135deg, #caa227 0%, #7a5c10 100%);
+    border: 0.2vh dashed rgba(255, 235, 180, 0.55);
+    box-shadow: 0 0.6vh 1.6vh rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#BtnsUPGM:hover {
+    transform: translateY(-0.4vh);
+    box-shadow: 0 1vh 2.4vh rgba(255, 90, 31, 0.4);
+}
+#BtnsUPGM::before, #BtnsUPGM::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.4vh;
+    height: 1.4vh;
+    border-radius: 50%;
+    background: #0b0b12;
+}
+#BtnsUPGM::before { left: 1.2vh; }
+#BtnsUPGM::after { right: 1.2vh; }
+#BtnsUPGM > p {
+    margin: 0;
+    font-family: "Bebas Neue", "Oswald", sans-serif;
+    letter-spacing: 0.3vh;
+    color: #2b1c06;
+    text-shadow: 0 0.15vh 0 rgba(255, 235, 180, 0.45);
 }
 .Click {
     display: flex;
@@ -232,44 +428,64 @@ button:hover {
     justify-content: center;
     flex-direction: column;
     position: absolute;
+    top: 0;
+    right: calc(100% + 1.5vh);
+    left: auto;
     align-items: center;
     text-align: center;
-    border-radius: 3vh; 
-    margin-right:  25vh;
+    border-radius: 1.2vh 0 0 1.2vh;
     height: 14vh;
     width: 8vw;
     font-size: 5vh;
     cursor: pointer;
-    background-color: rgb(157, 128, 0);
-    gap: 5vh;
+    background: repeating-linear-gradient(0deg, #f3e9d2, #f3e9d2 3px, #efe3c6 3px, #efe3c6 4px);
+    border: 0.2vh dashed #c9a227;
+    border-right: none;
+    box-shadow: -0.6vh 0.6vh 1.6vh rgba(0, 0, 0, 0.45);
+    gap: 1vh;
+}
+.hoverdiv > p {
+    margin: 0;
+    font-family: "Oswald", sans-serif;
+    line-height: 1.3 !important;
+    color: #241a08;
+}
+.hoverdiv > p:first-child {
+    font-size: 1.6vh;
+    letter-spacing: 0.2vh;
+    text-transform: uppercase;
+    color: #8a7451;
+}
+.hoverdiv > p:last-child {
+    font-size: 3.2vh;
+    font-weight: 600;
+    color: #b8451f;
 }
 @keyframes movimentar {
     from {
-        margin-right: 25vh;
+        opacity: 0;
+        transform: translateX(1vh);
     }
-    to{
-        margin-right: 40vh;
-    };
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 .Foguetes:hover #fogueteshover {
     display: flex;
-    animation: movimentar 0.5s;
-    margin-right: 40vh;
+    animation: movimentar 0.3s ease;
 }
 .Fumacas:hover #fumacashover {
     display: flex;
-    animation: movimentar 0.5s;
-    margin-right: 40vh;
+    animation: movimentar 0.3s ease;
 }
 .Click:hover .hoverdiv{
     display: flex;
-    animation: movimentar 0.5s;
-    margin-right: 40vh;
+    animation: movimentar 0.3s ease;
 }
 .Oruam:hover .hoverdiv {
     display: flex;
-    animation: movimentar 0.5s;
-    margin-right: 40vh;
+    animation: movimentar 0.3s ease;
 }
 .Click p, .Foguetes p, .Fumacas p, .Oruam p {
     margin: 0;
@@ -296,4 +512,59 @@ button:hover {
     display: none;
     width: 17vw;
     height: 50vh;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* fica acima de tudo */
+}
+
+.modal-box {
+  background: #1a1a1a;
+  border: 2px solid #d4a017; /* combina com o dourado dos seus botões */
+  border-radius: 12px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
+}
+
+.modal-box h2 {
+  color: #f5c518;
+  font-family: inherit; /* use a mesma fonte pixelada do resto */
+  margin-bottom: 25px;
+}
+
+.modal-btn {
+  display: block;
+  width: 100%;
+  padding: 15px 30px;
+  margin: 12px 0;
+  background: #b8860b;
+  color: #fff8dc;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.modal-btn:hover {
+  background: #d4a017;
+  transform: scale(1.03);
+}
+
+/* opcional: desfoca e desativa clique no conteúdo por baixo enquanto o modal está aberto */
+.game-blocked {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
 }
