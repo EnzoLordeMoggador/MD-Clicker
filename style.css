@@ -1,7 +1,15 @@
-body, html {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+html {
     padding: 0;
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body {
@@ -17,6 +25,7 @@ body {
     background-repeat: no-repeat;
     user-select: none;
 }
+
 body::before {
     content: "";
     opacity: 0;
@@ -28,16 +37,18 @@ body::before {
     height: 100%;
     backdrop-filter: blur(5px);
 }
+
 body.configAberto::before {
     opacity: 1;
     z-index: 90;
 }
+
 .GameDiv {
     display: flex;
     margin-left: 18vw;
-    width: 100vw;
     height: 100vh;
 }
+
 .PaginaInicial {
     display: none;
     position: relative;
@@ -46,11 +57,12 @@ body.configAberto::before {
     align-items: center;
     text-align: center;
     width: 100vw;
-    min-height: 90vh;
+    min-height: 100vh;
     overflow: hidden;
     gap: 3vh;
     padding: 4vh 0;
 }
+
 .PaginaInicial .spotlight {
     position: absolute;
     top: -20vh;
@@ -63,15 +75,26 @@ body.configAberto::before {
     z-index: 0;
     animation: holofote 6s ease-in-out infinite;
 }
+
 @keyframes holofote {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
+
 @media (prefers-reduced-motion: reduce) {
-    .PaginaInicial .spotlight { animation: none; }
+    .PaginaInicial .spotlight {
+        animation: none;
+    }
 }
+
 .marquee {
-    top: -8vh;
     position: relative;
     z-index: 1;
     display: flex;
@@ -79,12 +102,14 @@ body.configAberto::before {
     align-items: center;
     gap: 1vh;
 }
+
 .marquee h1 {
     position: relative;
     margin: 0;
     font-size: 8vh;
     text-shadow: 0 0 3vh rgba(255, 197, 24, 0.55), 0 0 1vh rgba(255, 90, 31, 0.6);
 }
+
 .eyebrow {
     margin: 0;
     font-family: "Oswald", sans-serif;
@@ -93,11 +118,14 @@ body.configAberto::before {
     text-transform: uppercase;
     color: #f5c518;
 }
+
 .gifEx {
     width: 20px;
     height: 20px;
 }
-.Config, .configE {
+
+.Config,
+.configE {
     background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
@@ -111,24 +139,30 @@ body.configAberto::before {
     z-index: 99;
     cursor: pointer;
 }
+
 .configE {
     display: none;
     border-radius: 1vh;
-    
+
 }
+
 @keyframes expandir {
     from {
         width: 1vw;
     }
+
     to {
         width: 15vw;
     }
 }
-.Config:hover .configE {
+
+.Config:hover .configE,
+.Config.configOpen .configE {
     display: flex;
     animation: expandir 0.5s;
     width: 15vw;
 }
+
 h1 {
     color: white;
     position: absolute;
@@ -136,15 +170,17 @@ h1 {
     font-size: 10vh;
 }
 
-#pontos{
+#pontos {
     color: white;
     font-size: 7vh;
     margin-top: 10vh;
 }
+
 #mdcoins {
     font-size: 4vh;
     top: -30vh;
 }
+
 .ticket-fields input {
     width: 100%;
     height: 5.5vh;
@@ -158,15 +194,18 @@ h1 {
     font-size: 2vh;
     color: #241a08;
 }
+
 .ticket-fields input::placeholder {
     color: #8a7451;
     font-weight: 300;
 }
+
 .ticket-fields input:focus {
     outline: none;
     border-bottom-color: #ff5a1f;
     background: rgba(255, 90, 31, 0.06);
 }
+
 .field {
     display: flex;
     flex-direction: column;
@@ -174,6 +213,7 @@ h1 {
     gap: 0.6vh;
     text-align: left;
 }
+
 .field span {
     font-family: "Oswald", sans-serif;
     font-size: 1.5vh;
@@ -181,6 +221,7 @@ h1 {
     text-transform: uppercase;
     color: #7a5c1e;
 }
+
 button {
     background: linear-gradient(to right, rgb(0, 139, 120) 30%, cyan 70%);
     width: 12vw;
@@ -189,16 +230,20 @@ button {
     font-size: 3vh;
     cursor: pointer;
 }
+
 button:hover {
     background: linear-gradient(to right, rgb(0, 139, 14) 30%, rgb(0, 255, 76) 70%);
 }
+
 .ticket-actions {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.4vh;
 }
-#Login, #Cadastrar {
+
+#Login,
+#Cadastrar {
     width: 100%;
     height: 6.5vh;
     border-radius: 0.8vh;
@@ -211,13 +256,18 @@ button:hover {
     letter-spacing: 0.2vh;
     box-shadow: 0 0.6vh 1.5vh rgba(255, 90, 31, 0.35);
 }
-#Login:hover, #Cadastrar:hover {
+
+#Login:hover,
+#Cadastrar:hover {
     background: linear-gradient(to right, #ff7a3f 0%, #ffd94a 100%);
 }
+
 #Cadastrar {
     display: none;
 }
-#Cadastre-se, #backcad {
+
+#Cadastre-se,
+#backcad {
     background: none;
     width: auto;
     height: auto;
@@ -230,13 +280,17 @@ button:hover {
     text-decoration: underline;
     text-underline-offset: 0.4vh;
 }
-#Cadastre-se:hover, #backcad:hover {
+
+#Cadastre-se:hover,
+#backcad:hover {
     background: none;
     color: #ff5a1f;
 }
+
 #backcad {
     display: none;
 }
+
 .ticket-stub {
     position: relative;
     z-index: 1;
@@ -251,6 +305,7 @@ button:hover {
     box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.5), inset 0 0 0 0.5vh rgba(212, 160, 23, 0.15);
     transform: rotate(-1.2deg);
 }
+
 .ticket-hole {
     position: absolute;
     top: 1.6vh;
@@ -262,6 +317,7 @@ button:hover {
     background: #0b0b12;
     box-shadow: inset 0 0 0 0.2vh #c9a227;
 }
+
 .ticket-kicker {
     margin: 0.5vh 0 2vh;
     font-family: "Oswald", sans-serif;
@@ -270,6 +326,7 @@ button:hover {
     text-transform: uppercase;
     color: #8a7451;
 }
+
 .inline.ticket-fields {
     flex-direction: column;
     align-items: stretch;
@@ -277,12 +334,15 @@ button:hover {
     gap: 2.6vh;
     width: 100%;
 }
+
 #LoginDiv.ticket-fields {
     display: flex;
 }
+
 #CadastrarDiv.ticket-fields {
     display: none;
 }
+
 .tear-line {
     position: relative;
     width: 100%;
@@ -290,7 +350,9 @@ button:hover {
     margin: 3vh 0 2.4vh;
     border-top: 0.25vh dashed #c9a227;
 }
-.tear-line::before, .tear-line::after {
+
+.tear-line::before,
+.tear-line::after {
     content: "";
     position: absolute;
     top: -1vh;
@@ -299,8 +361,15 @@ button:hover {
     border-radius: 50%;
     background: #0b0b12;
 }
-.tear-line::before { left: -3vh; }
-.tear-line::after { right: -3vh; }
+
+.tear-line::before {
+    left: -3vh;
+}
+
+.tear-line::after {
+    right: -3vh;
+}
+
 .barcode {
     margin-top: 2.6vh;
     width: 80%;
@@ -308,6 +377,7 @@ button:hover {
     background: repeating-linear-gradient(90deg, #241a08 0, #241a08 2px, transparent 2px, transparent 5px, #241a08 5px, #241a08 6px, transparent 6px, transparent 10px);
     opacity: 0.75;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -317,6 +387,7 @@ button:hover {
     margin-top: 40vh;
     margin-left: -8vw;
 }
+
 .VC {
     display: flex;
     flex-direction: inline;
@@ -329,6 +400,7 @@ button:hover {
     color: white;
     position: absolute;
 }
+
 .canhaoDnevoa {
     display: none;
     flex-direction: inline;
@@ -340,6 +412,7 @@ button:hover {
     font-size: 3vh;
     gap: 1vh;
 }
+
 #buttonclicker {
     width: 15vw;
     height: 25vh;
@@ -348,6 +421,7 @@ button:hover {
     top: 25vh;
     border-radius: 50vh;
 }
+
 .upgradeMenu {
     position: relative;
     text-align: center;
@@ -360,6 +434,7 @@ button:hover {
     margin-left: 2vw;
     box-shadow: 0 0 4vh rgba(212, 160, 23, 0.25), inset 0 0 6vh rgba(255, 90, 31, 0.06);
 }
+
 .upgradeMenu::before {
     content: "";
     position: absolute;
@@ -371,12 +446,14 @@ button:hover {
     background: radial-gradient(ellipse at center, rgba(255, 197, 24, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
     pointer-events: none;
 }
-.upgradeMenu h1{
+
+.upgradeMenu h1 {
     position: relative;
     margin: 3vh 0 4vh;
     font-size: 6vh;
     text-shadow: 0 0 2.5vh rgba(255, 197, 24, 0.55), 0 0 1vh rgba(255, 90, 31, 0.6);
 }
+
 #BtnsUPGM {
     position: relative;
     display: flex;
@@ -394,11 +471,14 @@ button:hover {
     box-shadow: 0 0.6vh 1.6vh rgba(0, 0, 0, 0.5);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
 #BtnsUPGM:hover {
     transform: translateY(-0.4vh);
     box-shadow: 0 1vh 2.4vh rgba(255, 90, 31, 0.4);
 }
-#BtnsUPGM::before, #BtnsUPGM::after {
+
+#BtnsUPGM::before,
+#BtnsUPGM::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -408,21 +488,30 @@ button:hover {
     border-radius: 50%;
     background: #0b0b12;
 }
-#BtnsUPGM::before { left: 1.2vh; }
-#BtnsUPGM::after { right: 1.2vh; }
-#BtnsUPGM > p {
+
+#BtnsUPGM::before {
+    left: 1.2vh;
+}
+
+#BtnsUPGM::after {
+    right: 1.2vh;
+}
+
+#BtnsUPGM>p {
     margin: 0;
     font-family: "Bebas Neue", "Oswald", sans-serif;
     letter-spacing: 0.3vh;
     color: #2b1c06;
     text-shadow: 0 0.15vh 0 rgba(255, 235, 180, 0.45);
 }
+
 .Click {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .hoverdiv {
     display: none;
     justify-content: center;
@@ -444,54 +533,68 @@ button:hover {
     box-shadow: -0.6vh 0.6vh 1.6vh rgba(0, 0, 0, 0.45);
     gap: 1vh;
 }
-.hoverdiv > p {
+
+.hoverdiv>p {
     margin: 0;
     font-family: "Oswald", sans-serif;
     line-height: 1.3 !important;
     color: #241a08;
 }
-.hoverdiv > p:first-child {
+
+.hoverdiv>p:first-child {
     font-size: 1.6vh;
     letter-spacing: 0.2vh;
     text-transform: uppercase;
     color: #8a7451;
 }
-.hoverdiv > p:last-child {
+
+.hoverdiv>p:last-child {
     font-size: 3.2vh;
     font-weight: 600;
     color: #b8451f;
 }
+
 @keyframes movimentar {
     from {
         opacity: 0;
         transform: translateX(1vh);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
+
 .Foguetes:hover #fogueteshover {
     display: flex;
     animation: movimentar 0.3s ease;
 }
+
 .Fumacas:hover #fumacashover {
     display: flex;
     animation: movimentar 0.3s ease;
 }
-.Click:hover .hoverdiv{
+
+.Click:hover .hoverdiv {
     display: flex;
     animation: movimentar 0.3s ease;
 }
+
 .Oruam:hover .hoverdiv {
     display: flex;
     animation: movimentar 0.3s ease;
 }
-.Click p, .Foguetes p, .Fumacas p, .Oruam p {
+
+.Click p,
+.Foguetes p,
+.Fumacas p,
+.Oruam p {
     margin: 0;
     padding: 0;
     line-height: 0;
 }
+
 .Stage {
     display: flex;
     flex-direction: column;
@@ -508,63 +611,298 @@ button:hover {
     background-size: 120vh;
     background-repeat: no-repeat;
 }
+
 .OruamPNG {
     display: none;
     width: 17vw;
     height: 50vh;
 }
+
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); /* Safari */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* fica acima de tudo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* Safari */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* fica acima de tudo */
 }
 
 .modal-box {
-  background: #1a1a1a;
-  border: 2px solid #d4a017; /* combina com o dourado dos seus botões */
-  border-radius: 12px;
-  padding: 40px 50px;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
+    background: #1a1a1a;
+    border: 2px solid #d4a017;
+    /* combina com o dourado dos seus botões */
+    border-radius: 12px;
+    padding: 40px 50px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(212, 160, 23, 0.4);
 }
 
 .modal-box h2 {
-  color: #f5c518;
-  font-family: inherit; /* use a mesma fonte pixelada do resto */
-  margin-bottom: 25px;
+    color: #f5c518;
+    font-family: inherit;
+    /* use a mesma fonte pixelada do resto */
+    margin-bottom: 25px;
 }
 
 .modal-btn {
-  display: block;
-  width: 100%;
-  padding: 15px 30px;
-  margin: 12px 0;
-  background: #b8860b;
-  color: #fff8dc;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.15s, background 0.15s;
+    display: block;
+    width: 100%;
+    padding: 15px 30px;
+    margin: 12px 0;
+    background: #b8860b;
+    color: #fff8dc;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
 }
 
 .modal-btn:hover {
-  background: #d4a017;
-  transform: scale(1.03);
+    background: #d4a017;
+    transform: scale(1.03);
 }
 
 /* opcional: desfoca e desativa clique no conteúdo por baixo enquanto o modal está aberto */
 .game-blocked {
-  filter: blur(4px);
-  pointer-events: none;
-  user-select: none;
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* ---- Tablets / telas médias (até 1100px) ---- */
+@media (max-width: 1100px) {
+    .GameDiv {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+        min-height: 100vh;
+        padding: 2vh 1vw;
+        gap: 2vh;
+    }
+
+    .Stage {
+        width: 90vw;
+        max-width: 700px;
+        height: 60vh;
+        margin-left: 0;
+        order: 1;
+    }
+
+    .container {
+        position: relative;
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        order: 2;
+    }
+
+    .upgradeMenu {
+        width: 90vw;
+        max-width: 700px;
+        height: auto;
+        margin-left: 0;
+        padding-bottom: 3vh;
+        order: 3;
+    }
+
+    .upgradeMenu h1 {
+        position: relative;
+        margin: 2vh 0 3vh;
+        font-size: clamp(2.2rem, 6vw, 4rem);
+    }
+
+    #BtnsUPGM {
+        height: 12vh;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+}
+
+/* ---- Reorganiza o palco/canvas do jogo em coluna ---- */
+@media (max-width: 1100px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+        padding-top: 2vh;
+    }
+
+    h1#pontos {
+        position: relative;
+        margin: 1vh 0 0;
+    }
+
+    h1#mdcoins {
+        position: relative;
+        margin: 0 0 2vh;
+    }
+
+    #buttonclicker {
+        position: relative;
+        top: 0;
+        width: clamp(120px, 30vw, 220px);
+        height: clamp(120px, 30vw, 220px);
+    }
+
+    .VC {
+        position: relative;
+        bottom: 0;
+        margin-top: 1vh;
+    }
+}
+
+/* ---- Config (menu lateral) vira um botão de canto em telas menores ---- */
+@media (max-width: 1100px) {
+
+    .Config,
+    .configE {
+        width: 7vw;
+        min-width: 40px;
+        height: 7vh;
+        min-height: 40px;
+        border-radius: 1vh;
+    }
+
+    .Config:hover .configE,
+    .Config.configOpen .configE {
+        width: 60vw;
+        max-width: 260px;
+        height: auto;
+        min-height: 40px;
+        padding: 1.5vh 0;
+    }
+}
+
+/* ---- Ticket / tela de login-cadastro em telas médias ---- */
+@media (max-width: 700px) {
+    .ticket-stub {
+        width: min(92vw, 420px);
+        padding: 4vh 5vw 3vh;
+    }
+
+    .marquee h1 {
+        font-size: clamp(2.2rem, 10vw, 4rem);
+    }
+
+    .eyebrow {
+        font-size: clamp(0.8rem, 3vw, 1.1rem);
+    }
+
+    button {
+        width: 60vw;
+        max-width: 260px;
+    }
+}
+
+/* ---- Celulares (até 600px) ---- */
+@media (max-width: 600px) {
+    .PaginaInicial {
+        gap: 2vh;
+        padding: 3vh 3vw;
+    }
+
+    .ticket-stub {
+        width: 100%;
+        transform: none;
+    }
+
+    .field span {
+        font-size: clamp(0.7rem, 2.6vw, 1rem);
+    }
+
+    .ticket-fields input {
+        font-size: clamp(0.9rem, 3.4vw, 1.1rem);
+    }
+
+    #Login,
+    #Cadastrar {
+        width: 100%;
+        font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+
+    #Cadastre-se,
+    #backcad {
+        font-size: clamp(0.8rem, 3vw, 1rem);
+    }
+
+    .Stage {
+        width: 96vw;
+        height: 42vh;
+        border-radius: 3vh;
+        background-size: cover;
+    }
+
+    .upgradeMenu {
+        width: 96vw;
+    }
+
+    .upgradeMenu h1 {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+
+    #BtnsUPGM {
+        margin: 2vh 3vw;
+        height: 10vh;
+        font-size: clamp(1.2rem, 6vw, 1.8rem);
+    }
+
+    #pontos {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+    }
+
+    #mdcoins {
+        font-size: clamp(1.4rem, 6vw, 2rem);
+    }
+
+    #buttonclicker {
+        width: clamp(110px, 45vw, 180px);
+        height: clamp(110px, 45vw, 180px);
+    }
+
+    .modal-box {
+        padding: 30px 8vw;
+        width: 90vw;
+    }
+
+    .modal-btn {
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
+    }
+}
+
+/* ---- Telas sem hover (celular/tablet touch): mostra os preços dos
+       upgrades sempre visíveis em vez de depender de :hover ---- */
+@media (hover: none) {
+    .hoverdiv {
+        display: flex !important;
+        position: static;
+        margin-top: 1vh;
+        width: 90%;
+        height: auto;
+        border-radius: 1.2vh;
+        border-right: 0.2vh dashed #c9a227;
+        box-shadow: none;
+        animation: none !important;
+        padding: 1vh 0;
+    }
+
+    #BtnsUPGM {
+        height: auto;
+        padding: 1.5vh 0;
+    }
 }

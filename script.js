@@ -46,57 +46,54 @@ priceOruamUPG.textContent = priceOruam.toString();
 priceClickUPG.textContent = priceClick.toString();
 priceFoguetesUPG.textContent = priceFoguetes.toString();
 priceFumacasUPG.textContent = priceFumacas.toString();
-SCV.textContent = ClickValue.toString(); 
+SCV.textContent = ClickValue.toString();
 buttonclicker.addEventListener("click", () => {
-    
-    let valor = parseFloat(pontos.innerText);
-    let valormoreclickvalue = valor+ClickValue
-    pontos.innerText = valormoreclickvalue.toFixed(1);
+
+  let valor = parseFloat(pontos.innerText);
+  let valormoreclickvalue = valor + ClickValue
+  pontos.innerText = valormoreclickvalue.toFixed(1);
 
 
 })
 buttonclicker.addEventListener("click", () => {
-  if (FumacaUpgrade == true){
+  if (FumacaUpgrade == true) {
     SoltarFumaca();
   }
-    Pulsar();
+  Pulsar();
 })
 
 
 Cadastrese.addEventListener("click", () => {
-    PlayButton.style.display = "none";
-    Cadastrese.style.display = "none";
-    Cadastrar.style.display = "flex";
-    LoginDiv.style.display = "none";
-    CadastrarDiv.style.display = "inline-flex";
-    backcad.style.display = "flex"
+  PlayButton.style.display = "none";
+  Cadastrese.style.display = "none";
+  Cadastrar.style.display = "flex";
+  LoginDiv.style.display = "none";
+  CadastrarDiv.style.display = "inline-flex";
+  backcad.style.display = "flex"
 })
-function Pulsar () {
-  buttonclicker.style.width = "13vw";
-  buttonclicker.style.height = "23vh";
+function Pulsar() {
+  buttonclicker.style.transform = "scale(0.9)";
   setTimeout(() => {
-    buttonclicker.style.width = "17vw";
-    buttonclicker.style.height = "27vh";
+    buttonclicker.style.transform = "scale(1.1)";
   }, 100);
   setTimeout(() => {
-    buttonclicker.style.width = "15vw";
-    buttonclicker.style.height = "25vh";
-  }, 100);
+    buttonclicker.style.transform = "scale(1)";
+  }, 200);
 }
 
 clickupg.addEventListener("click", () => {
   let value = parseInt(pontos.innerText)
-    if (value >= priceClick){
-      let valuemPrice = value - priceClick;
-      pontos.innerText = valuemPrice.toFixed(1)
-      ClickValue = ClickValue+1;
-      
-      SCV.textContent = ClickValue.toString();
-      priceClick = priceClick*1.2;
-      priceClickUPG.textContent = priceClick.toFixed(1).toString();
-      
-    }
-  
+  if (value >= priceClick) {
+    let valuemPrice = value - priceClick;
+    pontos.innerText = valuemPrice.toFixed(1)
+    ClickValue = ClickValue + 1;
+
+    SCV.textContent = ClickValue.toString();
+    priceClick = priceClick * 1.2;
+    priceClickUPG.textContent = priceClick.toFixed(1).toString();
+
+  }
+
 })
 Foguetes.addEventListener("click", () => {
   let valor = parseFloat(pontos.innerText)
@@ -104,37 +101,39 @@ Foguetes.addEventListener("click", () => {
     let valuempricef = valor - priceFoguetes;
     pontos.innerText = valuempricef.toFixed(1);
     ClicksPerSecond = ClicksPerSecond + 1;
-    priceFoguetes = priceFoguetes*1.15;
+    priceFoguetes = priceFoguetes * 1.15;
     priceFoguetesUPG.textContent = priceFoguetes.toFixed(1).toString();
     setInterval(() => {
       let CPS = parseFloat(pontos.innerText);
-      pontos.innerText = CPS+ClicksPerSecond;
+      pontos.innerText = CPS + ClicksPerSecond;
       Pulsar();
     }, 1000);
 
-  }})
+  }
+})
 Fumacas.addEventListener("click", () => {
- let valor = parseFloat(pontos.innerText)
- if (valor >= priceFumacas) {
+  let valor = parseFloat(pontos.innerText)
+  if (valor >= priceFumacas) {
     let valuempricef = valor - priceFumacas;
     pontos.innerText = valuempricef.toFixed(1);
     ClicksCount = 0;
     FumacaUpgrade = true;
     priceFumacas = priceFumacas * 1.4;
-    
+
     priceFumacasUPG.textContent = priceFumacas.toFixed(1).toString();
-    BonusFumaca = BonusFumaca*1.5;
+    BonusFumaca = BonusFumaca * 1.5;
     canhaoDnevoa.style.display = "flex";
-  }})
+  }
+})
 function SoltarFumaca() {
   ClicksCount = ClicksCount + 1;
   let valor = parseFloat(pontos.innerText)
   CDN.textContent = ClicksCount.toString();
-    if (ClicksCount == 10) {
-      ClicksCount = 0;
-      pontos.innerText = valor + BonusFumaca;
-    }
+  if (ClicksCount == 10) {
+    ClicksCount = 0;
+    pontos.innerText = valor + BonusFumaca;
   }
+}
 Oruam.addEventListener("click", () => {
   let valor = parseFloat(pontos.innerText)
   if (valor >= priceOruam) {
@@ -144,28 +143,28 @@ Oruam.addEventListener("click", () => {
   }
 })
 
-backcad.addEventListener("click", () =>{
-    PlayButton.style.display = "block";
-    Cadastrese.style.display = "block";
-    Cadastrar.style.display = "none";
-    LoginDiv.style.display = "block";
-    CadastrarDiv.style.display = "none";
-    backcad.style.display = "none"
+backcad.addEventListener("click", () => {
+  PlayButton.style.display = "block";
+  Cadastrese.style.display = "block";
+  Cadastrar.style.display = "none";
+  LoginDiv.style.display = "block";
+  CadastrarDiv.style.display = "none";
+  backcad.style.display = "none"
 })
 
 
 PlayButton.addEventListener("click", () => {
-    
-    if (emailL.value == "" || senhaL.value == ""){
-      alert("Coloque os Dados Do Login")
 
-      emailL = document.getElementById("emailL").value = "";
-      senhaL = document.getElementById("senhaL").value = "";
-      return;
-    }
+  if (emailL.value == "" || senhaL.value == "") {
+    alert("Coloque os Dados Do Login")
 
-    PIDiv.style.display = "none"
-    DivGame.style.display = "flex"
+    emailL = document.getElementById("emailL").value = "";
+    senhaL = document.getElementById("senhaL").value = "";
+    return;
+  }
+
+  PIDiv.style.display = "none"
+  DivGame.style.display = "flex"
 })
 
 Config.addEventListener("mouseenter", () => {
@@ -174,45 +173,49 @@ Config.addEventListener("mouseenter", () => {
 Config.addEventListener("mouseleave", () => {
   document.body.classList.remove("configAberto");
 })
+Config.addEventListener("click", () => {
+  Config.classList.toggle("configOpen");
+  document.body.classList.toggle("configAberto");
+})
 
 
 
 // CODIGO DO BANCO DE DADOS
-Cadastrar.addEventListener("click", async () =>{
-    if (userc.value == "" || emailc.value == "" || senhac.value == ""){
-        alert("Coloque Todos os Dados para Poder Cadastrar");
-        userc.value = "";
-        emailc.value = "";
-        senhac.value = "";
-        return;
-      }
+Cadastrar.addEventListener("click", async () => {
+  if (userc.value == "" || emailc.value == "" || senhac.value == "") {
+    alert("Coloque Todos os Dados para Poder Cadastrar");
+    userc.value = "";
+    emailc.value = "";
+    senhac.value = "";
+    return;
+  }
 
-      const dadosC = {
-        nome: userc.value,
-        email: emailc.value,
-        senha: senhac.value,
-      }
-      try { 
-      const response = await fetch("http://localhost:3000/cadastrar", {
-        method: "post",
-        headers: {"content-type": "application/json"},
-        body: JSON.stringify(dadosC)
-      })
+  const dadosC = {
+    nome: userc.value,
+    email: emailc.value,
+    senha: senhac.value,
+  }
+  try {
+    const response = await fetch("http://localhost:3000/cadastrar", {
+      method: "post",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(dadosC)
+    })
 
-      const result = await response.json()
-      alert(result.mensagem)
+    const result = await response.json()
+    alert(result.mensagem)
 
-      if(response.ok){
-        userc.value = "";
-        emailc.value = "";
-        senhac.value = "";
+    if (response.ok) {
+      userc.value = "";
+      emailc.value = "";
+      senhac.value = "";
 
-        backcad.click()
-      }
-    } catch (err){
-        console.error("erro ao conectar", err)
-        alert("deu red")
+      backcad.click()
     }
+  } catch (err) {
+    console.error("erro ao conectar", err)
+    alert("deu red")
+  }
 })
 
 
