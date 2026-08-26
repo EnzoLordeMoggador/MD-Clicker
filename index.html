@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
@@ -74,6 +75,17 @@
             <div class="configE">
                 <p>Configurações</p>
             </div>
+            <button id="RankingBtn" class="RankingBtn" title="Ver Ranking">🏆</button>
+        </div>
+
+        <div id="RankingOverlay" class="ranking-overlay">
+            <div class="ranking-box">
+                <button id="RankingClose" class="ranking-close">✕</button>
+                <h2 class="ranking-title">🏆 Ranking</h2>
+                <div id="RankingLista" class="ranking-lista">
+                    <p class="ranking-vazio">Carregando ranking...</p>
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class="canhaoDnevoa">
@@ -125,6 +137,13 @@
                     <p class="priceOruamUPG"> </p>
                 </div>
             </div>
+            <div id="BtnsUPGM" class="Rebirth">
+                <p>REBIRTH</p>
+                <div id="rebirthhover" class="hoverdiv">
+                    <p>Value:</p>
+                    <p class="priceRebirthUPG"> </p>
+                </div>
+            </div>
         </div>
     </div>
     </div>
@@ -137,4 +156,5 @@
 </body>
 <script src="script.js"></script>
 
+</html>
 </html>
