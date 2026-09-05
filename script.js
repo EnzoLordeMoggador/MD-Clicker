@@ -138,7 +138,7 @@ Fumacas.addEventListener("click", () => {
 
 Oruam.addEventListener("click", () => {
   let valor = parseFloat(pontos.innerText);
-  if (valor >= priceOruam) {
+  if (valor >= priceOruam && OruamActive == false) {
     pontos.innerText = (valor - priceOruam).toFixed(1);
     OruamActive = true;
     ClickValue = ClickValue * 2;
