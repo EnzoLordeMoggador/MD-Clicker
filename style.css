@@ -583,11 +583,11 @@ button:hover {
 }
 
 #buttonclicker {
-    width: 15vw;
-    height: 25vh;
+    width: 20vw;
+    height: 80vh;
     cursor: pointer;
     position: absolute;
-    top: 25vh;
+    top: -23vh;
     border-radius: 50vh;
 }
 

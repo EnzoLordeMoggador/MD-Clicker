@@ -43,6 +43,8 @@ let FumacaUpgrade = false;
 let OruamActive = false;
 let intervalCPS = null;
 
+
+
 const { createClient } = supabase;
 const supabaseClient = createClient(
   "https://cmkxscnpxbnoujdzsycy.supabase.co", 
@@ -63,16 +65,25 @@ function atualizarUI() {
 atualizarUI();
 
 function Pulsar() {
-  buttonclicker.style.width = "12vw";
-  buttonclicker.style.height = "22vh";
-  setTimeout(() => {
-    buttonclicker.style.width = "18vw";
-    buttonclicker.style.height = "28vh";
-  }, 100);
-  setTimeout(() => {
-    buttonclicker.style.width = "15vw";
-    buttonclicker.style.height = "25vh";
-  }, 100);
+  let x = 1;
+  const fogos = new Audio("Assets/mixkit-fast-whistle-firework-3103.wav")
+  fogos.play();
+  const intervalox = setInterval(() => {
+    buttonclicker.src = `Assets/${x}.png`
+
+    buttonclicker.style.top = "-23vh";
+    buttonclicker.style.height = "80vh";
+    buttonclicker.style.width = "20vw";
+    x = x + 1;
+    console.log(x);
+    if (x === 9) {
+      clearInterval(intervalox)
+      buttonclicker.src = "Assets/1.png"
+   
+      x = 1;
+    }
+  }, 20)
+  
 }
 
 function SoltarFumaca() {
