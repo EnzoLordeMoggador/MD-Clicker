@@ -65,24 +65,36 @@ function atualizarUI() {
 atualizarUI();
 
 function Pulsar() {
-  let x = 1;
   const fogos = new Audio("Assets/mixkit-fast-whistle-firework-3103.wav")
   fogos.play();
+  let i = 0;
+  const x = [
+    "https://i.postimg.cc/sQ6KprZW/1.png",
+    "https://i.postimg.cc/G87zkCsY/2.png",
+    "https://i.postimg.cc/k61wxmtt/3.png",
+    "https://i.postimg.cc/qhbQ8TCg/4.png",
+    "https://i.postimg.cc/5Y7pwVF6/5.png",
+    "https://i.postimg.cc/jwgvzbJx/6.png",
+    "https://i.postimg.cc/FdWGj4Jz/7.png",
+    "https://i.postimg.cc/0MWZpsJ2/8.png",
+    "https://i.postimg.cc/gXS4vW6d/9.png"
+  ];
+
   const intervalox = setInterval(() => {
-    buttonclicker.src = `Assets/${x}.png`
+    buttonclicker.src = x[i];
 
     buttonclicker.style.top = "-23vh";
     buttonclicker.style.height = "80vh";
     buttonclicker.style.width = "20vw";
-    x = x + 1;
+    i = i+1;
     console.log(x);
-    if (x === 9) {
+    if (i >= x.length) {
       clearInterval(intervalox)
-      buttonclicker.src = "Assets/1.png"
+      buttonclicker.src = "https://i.postimg.cc/sQ6KprZW/1.png"
    
-      x = 1;
+      i = 0;
     }
-  }, 20)
+  }, 50)
   
 }
 
