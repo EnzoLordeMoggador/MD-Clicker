@@ -623,7 +623,7 @@ button:hover {
     text-shadow: 0 0 2.5vh rgba(255, 197, 24, 0.55), 0 0 1vh rgba(255, 90, 31, 0.6);
 }
 
-#BtnsUPGM {
+.BtnsUPGM {
     position: relative;
     display: flex;
     justify-content: center;
@@ -641,13 +641,13 @@ button:hover {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-#BtnsUPGM:hover {
+.BtnsUPGM:hover {
     transform: translateY(-0.4vh);
     box-shadow: 0 1vh 2.4vh rgba(255, 90, 31, 0.4);
 }
 
-#BtnsUPGM::before,
-#BtnsUPGM::after {
+.BtnsUPGM::before,
+.BtnsUPGM::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -658,15 +658,15 @@ button:hover {
     background: #0b0b12;
 }
 
-#BtnsUPGM::before {
+.BtnsUPGM::before {
     left: 1.2vh;
 }
 
-#BtnsUPGM::after {
+.BtnsUPGM::after {
     right: 1.2vh;
 }
 
-#BtnsUPGM>p {
+.BtnsUPGM>p {
     margin: 0;
     font-family: "Bebas Neue", "Oswald", sans-serif;
     letter-spacing: 0.3vh;
@@ -754,6 +754,7 @@ button:hover {
     display: flex;
     animation: movimentar 0.3s ease;
 }
+
 .Rebirth:hover .hoverdiv {
     display: flex;
     animation: movimentar 0.3s ease;
@@ -853,6 +854,148 @@ button:hover {
 }
 
 /* ==========================================================================
+   EFEITOS: FOGOS DE ARTIFÍCIO + FUMAÇA DO CANHÃO DE NÉVOA
+   ========================================================================== */
+
+#fxLayer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 300;
+}
+
+/* ---------- FOGOS DE ARTIFÍCIO ---------- */
+
+.fx-fogo {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.fx-fogo .fx-anel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2vh;
+    height: 2vh;
+    margin: -1vh 0 0 -1vh;
+    border-radius: 50%;
+    border: 0.35vh solid currentColor;
+    opacity: 0.9;
+    animation: fxAnel 0.55s ease-out forwards;
+}
+
+@keyframes fxAnel {
+    from {
+        transform: scale(0.15);
+        opacity: 0.95;
+    }
+
+    to {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+.fx-fogo .fx-faisca {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0.75vh;
+    height: 0.75vh;
+    margin: -0.375vh 0 0 -0.375vh;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 1.2vh currentColor, 0 0 0.4vh #fff inset;
+    animation: fxFaisca 1s cubic-bezier(0.15, 0.7, 0.35, 1) forwards;
+}
+
+@keyframes fxFaisca {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(0.15);
+        opacity: 0;
+    }
+}
+
+/* ---------- FUMAÇA DO CANHÃO DE NÉVOA ---------- */
+
+.fx-fumaca {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    margin: -5vh 0 0 -5vh;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 45%,
+            rgba(255, 255, 255, 0.55) 0%,
+            rgba(214, 214, 224, 0.34) 35%,
+            rgba(180, 180, 200, 0.14) 60%,
+            rgba(180, 180, 200, 0) 75%);
+    filter: blur(0.8vh);
+    opacity: 0;
+    animation: fxFumaca 2.2s ease-out forwards;
+}
+
+@keyframes fxFumaca {
+    0% {
+        transform: translate(0, 0) scale(0.35) rotate(0deg);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(2.1) rotate(var(--rot));
+        opacity: 0;
+    }
+}
+
+/* Clarão no canhão quando o bônus dispara */
+.canhaoDnevoa.fx-disparo p {
+    animation: fxClarao 0.5s ease-out;
+}
+
+@keyframes fxClarao {
+    0% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+
+    35% {
+        text-shadow: 0 0 2.5vh rgba(255, 255, 255, 0.9), 0 0 4vh rgba(190, 220, 255, 0.7);
+        transform: scale(1.12);
+    }
+
+    100% {
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fx-fogo,
+    .fx-fumaca {
+        display: none;
+    }
+
+    .canhaoDnevoa.fx-disparo p {
+        animation: none;
+    }
+}
+
+/* ==========================================================================
    RESPONSIVIDADE
    ========================================================================== */
 
@@ -901,7 +1044,7 @@ button:hover {
         font-size: clamp(2.2rem, 6vw, 4rem);
     }
 
-    #BtnsUPGM {
+    .BtnsUPGM {
         height: 12vh;
         font-size: clamp(1.5rem, 4vw, 2.5rem);
     }
@@ -1030,7 +1173,7 @@ button:hover {
         font-size: clamp(1.8rem, 8vw, 3rem);
     }
 
-    #BtnsUPGM {
+    .BtnsUPGM {
         margin: 2vh 3vw;
         height: 10vh;
         font-size: clamp(1.2rem, 6vw, 1.8rem);
@@ -1075,7 +1218,7 @@ button:hover {
         padding: 1vh 0;
     }
 
-    #BtnsUPGM {
+    .BtnsUPGM {
         height: auto;
         padding: 1.5vh 0;
     }
