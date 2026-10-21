@@ -29,6 +29,9 @@ let CDN = document.querySelector(".CDN");
 let canhaoDnevoa = document.querySelector(".canhaoDnevoa");
 let priceRebirthUPG = document.querySelector(".priceRebirthUPG");
 
+let fogosUPG = document.querySelector(".Foguetes");
+let fxLayer = document.getElementById("fxLayer");
+
 let user = null;
 let ClickValue = 1;
 let priceClick = 10;
@@ -47,7 +50,7 @@ let intervalCPS = null;
 
 const { createClient } = supabase;
 const supabaseClient = createClient(
-  "https://cmkxscnpxbnoujdzsycy.supabase.co", 
+  "https://cmkxscnpxbnoujdzsycy.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNta3hzY25weGJub3VqZHpzeWN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExODIwNzYsImV4cCI6MjA5Njc1ODA3Nn0.t_3MWqfpVsCOMrwGfZu5dDHMpl-dCR6GnwVLPHJZclA"
 );
 
@@ -64,9 +67,93 @@ function atualizarUI() {
 }
 atualizarUI();
 
+/* ====== FOGOS DE ARTIFÍCIO ====== */
+function FogosDeArtificio(intensidade = 1) {
+  if (!fxLayer) return;
+
+  const cores = ["#ff5a1f", "#f5c518", "#ff2d55", "#4ad9ff", "#7cf05a", "#c77dff", "#ffffff"];
+  const origem = fogosUPG.getBoundingClientRect();
+  const cx = origem.left + origem.width / 2;
+  const cy = origem.top + origem.height / 2;
+
+  for (let i = 0; i < intensidade; i++) {
+    const fogo = document.createElement("div");
+    fogo.className = "fx-fogo";
+
+    // leve desvio para não sair tudo do mesmo pixel
+    const ox = (Math.random() - 0.5) * origem.width * 0.6;
+    const oy = (Math.random() - 0.5) * origem.height * 0.6;
+    fogo.style.left = `${cx + ox}px`;
+    fogo.style.top = `${cy + oy}px`;
+    fogo.style.color = cores[Math.floor(Math.random() * cores.length)];
+
+    const anel = document.createElement("div");
+    anel.className = "fx-anel";
+    fogo.appendChild(anel);
+
+    const qtdFaiscas = 14 + Math.floor(Math.random() * 8);
+    for (let j = 0; j < qtdFaiscas; j++) {
+      const faisca = document.createElement("div");
+      faisca.className = "fx-faisca";
+
+      const ang = (Math.PI * 2 * j) / qtdFaiscas + Math.random() * 0.35;
+      const dist = 45 + Math.random() * 65;
+
+      faisca.style.setProperty("--dx", `${Math.cos(ang) * dist}px`);
+      faisca.style.setProperty("--dy", `${Math.sin(ang) * dist}px`);
+      faisca.style.animationDelay = `${Math.random() * 0.12}s`;
+
+      fogo.appendChild(faisca);
+    }
+
+    fxLayer.appendChild(fogo);
+    setTimeout(() => fogo.remove(), 1300);
+  }
+}
+
+/* ====== FUMAÇA DO CANHÃO DE NÉVOA ====== */
+function ExplosaoDeFumaca() {
+  if (!fxLayer) return;
+
+  const alvo = (FumacaUpgrade && canhaoDnevoa) ? canhaoDnevoa : document.querySelector(".Stage");
+  const r = alvo.getBoundingClientRect();
+  const cx = r.left + r.width / 2;
+  const baseY = r.top > 0 ? r.top + r.height * 0.35 : r.height * 0.35;
+
+  // clarão no texto do canhão
+  if (canhaoDnevoa) {
+    canhaoDnevoa.classList.remove("fx-disparo");
+    void canhaoDnevoa.offsetWidth; // reinicia a animação
+    canhaoDnevoa.classList.add("fx-disparo");
+    setTimeout(() => canhaoDnevoa.classList.remove("fx-disparo"), 600);
+  }
+
+  const bolhas = 7;
+  for (let i = 0; i < bolhas; i++) {
+    const nuvem = document.createElement("div");
+    nuvem.className = "fx-fumaca";
+
+    const ox = (Math.random() - 0.5) * r.width * 0.35;
+    nuvem.style.left = `${cx + ox}px`;
+    nuvem.style.top = `${baseY}px`;
+    nuvem.style.animationDelay = `${i * 0.09}s`;
+    nuvem.style.width = `${8 + Math.random() * 6}vh`;
+    nuvem.style.height = nuvem.style.width;
+
+    // sobe e se espalha para os lados
+    nuvem.style.setProperty("--dx", `${(Math.random() - 0.5) * 22}vh`);
+    nuvem.style.setProperty("--dy", `${-(16 + Math.random() * 16)}vh`);
+    nuvem.style.setProperty("--rot", `${(Math.random() - 0.5) * 120}deg`);
+
+    fxLayer.appendChild(nuvem);
+    setTimeout(() => nuvem.remove(), 2600);
+  }
+}
+
 function Pulsar() {
   const fogos = new Audio("Assets/mixkit-fast-whistle-firework-3103.wav")
   fogos.play();
+  FogosDeArtificio(1);
   let i = 0;
   const x = [
     "https://i.postimg.cc/sQ6KprZW/1.png",
@@ -87,7 +174,6 @@ function Pulsar() {
     buttonclicker.style.height = "80vh";
     buttonclicker.style.width = "20vw";
     i = i+1;
-    console.log(x);
     if (i >= x.length) {
       clearInterval(intervalox)
       buttonclicker.src = "https://i.postimg.cc/sQ6KprZW/1.png"
@@ -105,6 +191,7 @@ function SoltarFumaca() {
   if (ClicksCount >= 10) {
     ClicksCount = 0;
     pontos.innerText = (valor + BonusFumaca).toFixed(1);
+    ExplosaoDeFumaca();
   }
 }
 
